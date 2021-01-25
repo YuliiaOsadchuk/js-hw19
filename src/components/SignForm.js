@@ -1,11 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+import WebFont from "webfontloader";
 import styled from "styled-components";
 
 import IconLock from "../icons/padlock.svg";
-
-import WebFont from "webfontloader";
 
 WebFont.load({
   google: {
@@ -117,57 +115,55 @@ const SignForm = ({
   onCheckedChange = () => {},
   invalidFields = {},
   children,
-}) => {
-  return (
-    <FlexBox width="100%" alignItems="center">
-      <StyledForm>
-        <FlexBox padding="30px">
-          <FlexBox height="120px">
-            <ImgBlock alignItems="center" paddingBottom="20px">
-              <Img src={IconLock} alt="padlock icon" />
-            </ImgBlock>
-            <Title>{titleText}</Title>
-          </FlexBox>
-          {children}
-          <FlexBox justifyContent="space-around" width="100%" height="150px">
-            <Input
-              placeholder="Email Address *"
-              value={emailAddress}
-              onChange={onEmailChange}
-              isValid={invalidFields["emailAddress"]}
-            />
-            <Input
-              placeholder="Password *"
-              value={password}
-              onChange={onPasswordChange}
-              isValid={invalidFields["password"]}
-            />
-          </FlexBox>
-          <FlexBox justifyContent="flex-start">
-            <FlexBox
-              flexDirection="row"
-              alignItems="center"
-              paddingTop="10px"
-              paddingBottom="20px"
-            >
-              <Checkbox type="checkbox" onChange={onCheckedChange} />
-              <Label>{labelText}</Label>
-            </FlexBox>
-          </FlexBox>
-          <FlexBox width="100%">
-            <Button onClick={onSignButtonClick}>{buttonText}</Button>
-          </FlexBox>
-          <FlexBox flexDirection="row" justifyContent="space-between">
-            <AsLink>{linkTextLeft}</AsLink>
-            <StyledLink to={linkUrl}>{linkTextRight}</StyledLink>
-          </FlexBox>
-          <FlexBox alignItems="center">
-            <Text>Copyright@ Your Website 2020</Text>
+}) => (
+  <FlexBox width="100%" alignItems="center">
+    <StyledForm>
+      <FlexBox padding="30px">
+        <FlexBox height="120px">
+          <ImgBlock alignItems="center" paddingBottom="20px">
+            <Img src={IconLock} alt="padlock icon" />
+          </ImgBlock>
+          <Title>{titleText}</Title>
+        </FlexBox>
+        {children}
+        <FlexBox justifyContent="space-around" width="100%" height="150px">
+          <Input
+            placeholder="Email Address *"
+            value={emailAddress}
+            onChange={onEmailChange}
+            isValid={invalidFields["emailAddress"]}
+          />
+          <Input
+            placeholder="Password *"
+            value={password}
+            onChange={onPasswordChange}
+            isValid={invalidFields["password"]}
+          />
+        </FlexBox>
+        <FlexBox justifyContent="flex-start">
+          <FlexBox
+            flexDirection="row"
+            alignItems="center"
+            paddingTop="10px"
+            paddingBottom="20px"
+          >
+            <Checkbox type="checkbox" onChange={onCheckedChange} />
+            <Label>{labelText}</Label>
           </FlexBox>
         </FlexBox>
-      </StyledForm>
-    </FlexBox>
-  );
-};
+        <FlexBox width="100%">
+          <Button onClick={onSignButtonClick}>{buttonText}</Button>
+        </FlexBox>
+        <FlexBox flexDirection="row" justifyContent="space-between">
+          <AsLink>{linkTextLeft}</AsLink>
+          <StyledLink to={linkUrl}>{linkTextRight}</StyledLink>
+        </FlexBox>
+        <FlexBox alignItems="center">
+          <Text>Copyright@ Your Website 2020</Text>
+        </FlexBox>
+      </FlexBox>
+    </StyledForm>
+  </FlexBox>
+);
 
 export default SignForm;
