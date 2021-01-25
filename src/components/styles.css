@@ -1,0 +1,68 @@
+/* .sign-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  width: 30%;
+  margin: 100px;
+  padding: 100px;
+} */
+/* .sign-form-wrapper .sign-icon-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.sign-form-wrapper .sign-icon-block .icon-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f48fb2;
+  position: relative;
+} */
+/* 
+.sign-form-wrapper .sign-icon-block .icon-img img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 10px;
+  top: 8px;
+} */
+
+/* .sign-form-wrapper .sign-icon-block .sign-in-text {
+  font-size: 24px;
+  color: white;
+  text-align: center;
+} */
+/* .sign-form-wrapper .inputs-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  height: 150px;
+} */
+/* .sign-form-wrapper .inputs-block .input-block {
+  display: flex;
+} */
+/* .sign-form-wrapper .inputs-block .sign-input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid grey;
+  background-color: black;
+  padding-left: 10px;
+} */
+/* 
+.sign-form-wrapper .sign-checkbox-block {
+} */
+/* .sign-form-wrapper .sign-checkbox-block .sign-checkbox {
+} */
+/* .sign-form-wrapper .sign-button-block {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+} */
+/* .sign-form-wrapper .sign-button-block .sign-button {
+  width: 100%;
+  height: 40px;
+  background-color: #91caf9;
+} */
