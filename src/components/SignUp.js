@@ -1,4 +1,4 @@
-import React, { isValidElement, useState } from "react";
+import React, { useState } from "react";
 
 import SignForm, { FlexBox, Input } from "./SignForm";
 
@@ -11,27 +11,41 @@ const SignUp = () => {
   });
   const [invalidFields, setInvalidFields] = useState({});
 
-  const handleFirstNameInput = ({ target: { value } }) => {
+  const handleFirstNameChange = ({ target: { value } }) => {
     setFormData({ ...formData, firstName: value });
-  };
-
-  const handleLastNameInput = ({ target: { value } }) => {
-    setFormData({ ...formData, lastName: value });
-  };
-
-  const handleEmailInput = ({ target: { value } }) => {
-    setFormData({ ...formData, emailAddress: value });
-  };
-
-  const handlePasswordInput = ({ target: { value } }) => {
-    setFormData({ ...formData, password: value });
-  };
-
-  const handleInputBlur = (fieldName) => {
     setInvalidFields({
       ...invalidFields,
-      [fieldName]: isFieldValid(fieldName),
+      firstName: isFieldValid("firstName"),
     });
+  };
+
+  const handleLastNameChange = ({ target: { value } }) => {
+    setFormData({ ...formData, lastName: value });
+    setInvalidFields({
+      ...invalidFields,
+      lastName: isFieldValid("lastName"),
+    });
+  };
+
+  const handleEmailChange = ({ target: { value } }) => {
+    setFormData({ ...formData, emailAddress: value });
+    setInvalidFields({
+      ...invalidFields,
+      emailAddress: isFieldValid("emailAddress"),
+    });
+  };
+
+  const handlePasswordChange = ({ target: { value } }) => {
+    setFormData({ ...formData, password: value });
+    setInvalidFields({
+      ...invalidFields,
+      password: isFieldValid("password"),
+    });
+  };
+
+  const checkName = (name) => {
+    const regex = new RegExp("^(?=.{2,})");
+    return regex.test(String([name]).toLowerCase());
   };
 
   const checkEmailAddress = (email) => {
@@ -40,15 +54,15 @@ const SignUp = () => {
   };
 
   const checkPassword = (passwordStr) => {
-    const mediumRegex = new RegExp(
+    const regex = new RegExp(
       "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})"
     );
-    return mediumRegex.test(String([passwordStr]).toLowerCase());
+    return regex.test(String([passwordStr]).toLowerCase());
   };
 
   const isFieldValid = (fieldName) => {
     if (fieldName === "firstName" || fieldName === "lastName") {
-      return formData[fieldName].length >= 3;
+      return checkName(formData[fieldName]);
     } else if (fieldName === "emailAddress") {
       return checkEmailAddress(formData[fieldName]);
     } else if (fieldName === "password") {
@@ -65,9 +79,8 @@ const SignUp = () => {
       linkTextLeft=""
       linkTextRight="Already have an account? Sign in"
       labelText="I want to receive inspiration, marketing promotions and updates via email"
-      onEmailInput={handleEmailInput}
-      onPasswordInput={handlePasswordInput}
-      onBlurInput={handleInputBlur}
+      onEmailChange={handleEmailChange}
+      onPasswordChange={handlePasswordChange}
       invalidFields={invalidFields}
       linkUrl="/signin"
     >
@@ -80,17 +93,15 @@ const SignUp = () => {
         <Input
           width="43%"
           placeholder="First Name"
-          onChange={handleFirstNameInput}
-          onBlur={() => handleInputBlur("firstName")}
+          onChange={handleFirstNameChange}
           isValid={invalidFields["firstName"]}
-        ></Input>
+        />
         <Input
           width="43%"
           placeholder="Last Name"
-          onChange={handleLastNameInput}
-          onBlur={() => handleInputBlur("lastName")}
+          onChange={handleLastNameChange}
           isValid={invalidFields["lastName"]}
-        ></Input>
+        />
       </FlexBox>
     </SignForm>
   );

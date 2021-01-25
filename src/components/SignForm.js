@@ -56,6 +56,7 @@ const Title = styled.h1`
 `;
 
 export const Input = styled.input`
+  outline: none;
   width: ${(props) => props.width};
   height: 50px;
   padding-left: 10px;
@@ -110,11 +111,10 @@ const SignForm = ({
   linkTextRight,
   linkUrl,
   labelText,
-  onEmailInput = () => {},
-  onPasswordInput = () => {},
+  onEmailChange = () => {},
+  onPasswordChange = () => {},
   onSignButtonClick = () => {},
-  onBlurInput = () => {},
-  onCheckedInput = () => {},
+  onCheckedChange = () => {},
   invalidFields = {},
   children,
 }) => {
@@ -124,7 +124,7 @@ const SignForm = ({
         <FlexBox padding="30px">
           <FlexBox height="120px">
             <ImgBlock alignItems="center" paddingBottom="20px">
-              <Img src={IconLock} alt="padlock icon"></Img>
+              <Img src={IconLock} alt="padlock icon" />
             </ImgBlock>
             <Title>{titleText}</Title>
           </FlexBox>
@@ -133,17 +133,15 @@ const SignForm = ({
             <Input
               placeholder="Email Address *"
               value={emailAddress}
-              onChange={onEmailInput}
-              onBlur={() => onBlurInput("emailAddress")}
+              onChange={onEmailChange}
               isValid={invalidFields["emailAddress"]}
-            ></Input>
+            />
             <Input
               placeholder="Password *"
               value={password}
-              onChange={onPasswordInput}
-              onBlur={() => onBlurInput("password")}
+              onChange={onPasswordChange}
               isValid={invalidFields["password"]}
-            ></Input>
+            />
           </FlexBox>
           <FlexBox justifyContent="flex-start">
             <FlexBox
@@ -152,7 +150,7 @@ const SignForm = ({
               paddingTop="10px"
               paddingBottom="20px"
             >
-              <Checkbox type="checkbox" onChange={onCheckedInput}></Checkbox>
+              <Checkbox type="checkbox" onChange={onCheckedChange} />
               <Label>{labelText}</Label>
             </FlexBox>
           </FlexBox>

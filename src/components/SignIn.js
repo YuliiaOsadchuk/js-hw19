@@ -12,11 +12,11 @@ const SignIn = () => {
 
   const [isRemember, setIsRemember] = useState(false);
 
-  const handleEmailInput = ({ target: { value } }) => {
+  const handleEmailChange = ({ target: { value } }) => {
     setUserData({ ...userData, emailAddress: value });
   };
 
-  const handlePasswordInput = ({ target: { value } }) => {
+  const handlePasswordChange = ({ target: { value } }) => {
     setUserData({ ...userData, password: value });
   };
 
@@ -37,10 +37,10 @@ const SignIn = () => {
       linkTextLeft="Forgot Password?"
       linkTextRight="Don't have an account? Sign up"
       labelText="Remember me"
-      onEmailInput={handleEmailInput}
-      onPasswordInput={handlePasswordInput}
+      onEmailChange={handleEmailChange}
+      onPasswordChange={handlePasswordChange}
       onSignButtonClick={handleSignInButtonClick}
-      onCheckedInput={handleRememberCheck}
+      onCheckedChange={handleRememberCheck}
       linkUrl="/signup"
     />
   );
