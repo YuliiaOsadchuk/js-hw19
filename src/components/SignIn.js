@@ -12,12 +12,8 @@ const SignIn = () => {
 
   const [isRemember, setIsRemember] = useState(false);
 
-  const handleEmailChange = ({ target: { value } }) => {
-    setUserData({ ...userData, emailAddress: value });
-  };
-
-  const handlePasswordChange = ({ target: { value } }) => {
-    setUserData({ ...userData, password: value });
+  const handleInputChange = ({ target: { value } }, fieldName) => {
+    setUserData({ ...userData, [fieldName]: value });
   };
 
   const handleSignInButtonClick = () => {
@@ -37,8 +33,7 @@ const SignIn = () => {
       linkTextLeft="Forgot Password?"
       linkTextRight="Don't have an account? Sign up"
       labelText="Remember me"
-      onEmailChange={handleEmailChange}
-      onPasswordChange={handlePasswordChange}
+      onInputChange={handleInputChange}
       onSignButtonClick={handleSignInButtonClick}
       onCheckedChange={handleRememberCheck}
       linkUrl="/signup"

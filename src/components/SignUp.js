@@ -11,35 +11,11 @@ const SignUp = () => {
   });
   const [invalidFields, setInvalidFields] = useState({});
 
-  const handleFirstNameChange = ({ target: { value } }) => {
-    setFormData({ ...formData, firstName: value });
+  const handleInputChange = ({ target: { value } }, fieldName) => {
+    setFormData({ ...formData, [fieldName]: value });
     setInvalidFields({
       ...invalidFields,
-      firstName: isFieldValid("firstName"),
-    });
-  };
-
-  const handleLastNameChange = ({ target: { value } }) => {
-    setFormData({ ...formData, lastName: value });
-    setInvalidFields({
-      ...invalidFields,
-      lastName: isFieldValid("lastName"),
-    });
-  };
-
-  const handleEmailChange = ({ target: { value } }) => {
-    setFormData({ ...formData, emailAddress: value });
-    setInvalidFields({
-      ...invalidFields,
-      emailAddress: isFieldValid("emailAddress"),
-    });
-  };
-
-  const handlePasswordChange = ({ target: { value } }) => {
-    setFormData({ ...formData, password: value });
-    setInvalidFields({
-      ...invalidFields,
-      password: isFieldValid("password"),
+      firstName: isFieldValid(fieldName),
     });
   };
 
@@ -79,8 +55,8 @@ const SignUp = () => {
       linkTextLeft=""
       linkTextRight="Already have an account? Sign in"
       labelText="I want to receive inspiration, marketing promotions and updates via email"
-      onEmailChange={handleEmailChange}
-      onPasswordChange={handlePasswordChange}
+      onEmailChange={handleInputChange}
+      onPasswordChange={handleInputChange}
       invalidFields={invalidFields}
       linkUrl="/signin"
     >
@@ -93,13 +69,13 @@ const SignUp = () => {
         <Input
           width="43%"
           placeholder="First Name"
-          onChange={handleFirstNameChange}
+          onChange={handleInputChange}
           isValid={invalidFields["firstName"]}
         />
         <Input
           width="43%"
           placeholder="Last Name"
-          onChange={handleLastNameChange}
+          onChange={handleInputChange}
           isValid={invalidFields["lastName"]}
         />
       </FlexBox>

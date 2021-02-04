@@ -60,7 +60,7 @@ export const Input = styled.input`
   padding-left: 10px;
   border: 1px solid grey;
   border-color: ${(props) =>
-    props.isValid === undefined ? "grey" : props.isValid ? "green" : "red"};
+    !props.isValid ? "grey" : props.isValid ? "green" : "red"};
   background-color: black;
   border-radius: 5px;
   color: white;
@@ -109,8 +109,8 @@ const SignForm = ({
   linkTextRight,
   linkUrl,
   labelText,
-  onEmailChange = () => {},
-  onPasswordChange = () => {},
+  onInputChange = () => {},
+  // onPasswordChange = () => {},
   onSignButtonClick = () => {},
   onCheckedChange = () => {},
   invalidFields = {},
@@ -130,13 +130,13 @@ const SignForm = ({
           <Input
             placeholder="Email Address *"
             value={emailAddress}
-            onChange={onEmailChange}
+            onChange={(e) => onInputChange(e, "emailAddress")}
             isValid={invalidFields["emailAddress"]}
           />
           <Input
             placeholder="Password *"
             value={password}
-            onChange={onPasswordChange}
+            onChange={(e) => onInputChange(e, "password")}
             isValid={invalidFields["password"]}
           />
         </FlexBox>
